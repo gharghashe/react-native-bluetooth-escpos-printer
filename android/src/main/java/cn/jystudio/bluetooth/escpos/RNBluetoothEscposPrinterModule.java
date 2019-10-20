@@ -347,9 +347,9 @@ public class RNBluetoothEscposPrinterModule extends ReactContextBaseJavaModule
         }
 
         //cannot larger then devicesWith;
-        if(width > deviceWidth || width == 0){
-            width = deviceWidth;
-        }
+        //if(width > deviceWidth || width == 0){
+        //    width = deviceWidth;
+        //}
 
         byte[] bytes = Base64.decode(base64encodeStr, Base64.DEFAULT);
         Bitmap mBitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
@@ -364,7 +364,7 @@ public class RNBluetoothEscposPrinterModule extends ReactContextBaseJavaModule
              */
 
             if(type.equals("woosim")){
-                byte[] data = fastPrintBitmap(0, 0, 576, mBitmap.getHeight(), mBitmap);
+                byte[] data = fastPrintBitmap(0, 0, width, mBitmap.getHeight(), mBitmap);
                 mBitmap.recycle();
 
                 sendDataByte(new byte[]{27, 76});
